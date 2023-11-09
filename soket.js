@@ -2,13 +2,14 @@ const http = require('http');
 const express = require('express');
 const {Server} = require('socket.io');
 const axios = require('axios')
-
+const cors = require('cors');
 
 const server_url = process.env.SERVER_URL;
  
 
 // Create an Express app and a Node.js HTTP server
 const app = express();
+app.use(cors()); // Enable CORS for all routes
 const server = http.createServer(app);
 
 // Create a Socket.IO instance attached to the server
