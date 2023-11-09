@@ -3,6 +3,7 @@ const express = require('express');
 const {Server} = require('socket.io');
 const axios = require('axios')
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const server_url = process.env.SERVER_URL;
  
