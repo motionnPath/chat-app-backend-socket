@@ -9,7 +9,14 @@ const server_url = process.env.SERVER_URL;
 
 // Create an Express app and a Node.js HTTP server
 const app = express();
-app.use(cors()); // Enable CORS for all routes
+app.use(cors({
+  origin: process.env.CLIENT_URL, // Allow your frontend domain
+  credentials: true,
+})); // Enable CORS for all routes
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 const server = http.createServer(app);
 
 // Create a Socket.IO instance attached to the server
