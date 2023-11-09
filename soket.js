@@ -4,6 +4,7 @@ const {Server} = require('socket.io');
 const axios = require('axios')
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 const server_url = process.env.SERVER_URL;
  
@@ -17,6 +18,7 @@ app.use(cors({
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 const server = http.createServer(app);
 
