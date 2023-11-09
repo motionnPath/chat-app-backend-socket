@@ -25,6 +25,8 @@ let private_room
 let onlineUsers = []; // Store user information and socket connections
 
 io.on('connection', (socket) => {
+
+  console.log('new connection from ======', socket.id)
   
   socket.on("join-room",({room})=> {
     private_room = room
