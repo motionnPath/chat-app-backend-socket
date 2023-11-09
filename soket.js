@@ -2,34 +2,23 @@ const http = require('http');
 const express = require('express');
 const {Server} = require('socket.io');
 const axios = require('axios')
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
+
 
 const server_url = process.env.SERVER_URL;
  
 
 // Create an Express app and a Node.js HTTP server
 const app = express();
-app.use(cors({
-  origin: process.env.CLIENT_URL, // Allow your frontend domain
-  credentials: true,
-})); // Enable CORS for all routes
-
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-app.use(cookieParser());
-
 const server = http.createServer(app);
 
 // Create a Socket.IO instance attached to the server
 const io = new Server(server,{
-    cors:{
-        origin: process.env.CLIENT_URL, 
-        methods: ['GET', 'POST'],
-        allowedHeaders:['my-custom-header'],
-        credentials:true
-    }
+  cors:{
+    origin: process.env.CLIENT_URL, 
+    methods: ['GET', 'POST'],
+    allowedHeaders:['my-custom-header'],
+    credentials:true
+}
 });
 
 
@@ -37,8 +26,6 @@ let private_room
 let onlineUsers = []; // Store user information and socket connections
 
 io.on('connection', (socket) => {
-
-  console.log('new connection from ======', socket.id)
   
   socket.on("join-room",({room})=> {
     private_room = room
@@ -117,8 +104,9 @@ io.on('connection', (socket) => {
   });
 });
 
-const socket_port = process.env.SOCKET_PORT || 5000;
 
-server.listen(socket_port, () => {
-  console.log(`Socket is running on port: `,socket_port);
-});
+
+
+module.exports = {
+  socket:server
+}
