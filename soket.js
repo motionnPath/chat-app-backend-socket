@@ -104,9 +104,8 @@ io.on('connection', (socket) => {
   });
 });
 
+server.listen(process.env.SOCKET_PORT, ()=>{
+  console.log('Server is running on port: ',process.env.SOCKET_PORT)
+})
 
 
-
-module.exports = {
-  socket:server
-}
