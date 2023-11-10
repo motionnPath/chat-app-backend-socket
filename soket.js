@@ -93,7 +93,7 @@ io.on('connection', (socket) => {
     
     // saving msg data to database
     if(data){
-      axios.post(`${server_url}/conversations/new-conversation`,{
+      axios.post(`${server_url.toString()}/conversations/new-conversation`,{
         conversation: {
           message,
           from:sender.username,
