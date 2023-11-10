@@ -17,7 +17,7 @@ const server = http.createServer(app);
 // Create a Socket.IO instance attached to the server
 const io = new Server(server,{
   cors:{
-    origin:"https://chat-app-frontend-yevs.onrender.com/"
+    origin:"https://chat-app-frontend-yevs.onrender.com"
   }
 });
 
