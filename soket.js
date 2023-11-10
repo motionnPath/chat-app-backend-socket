@@ -15,14 +15,7 @@ const app = express();
 const server = http.createServer(app);
 
 // Create a Socket.IO instance attached to the server
-const io = new Server(server,{
-  cors:{
-    origin: process.env.CLIENT_URL, 
-    methods: ['GET', 'POST'],
-    allowedHeaders:['my-custom-header'],
-    credentials:true
-}
-});
+const io = new Server(server);
 
 app.use(cors())
 app.use(router)
