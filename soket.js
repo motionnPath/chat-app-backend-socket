@@ -4,7 +4,7 @@ const {Server} = require('socket.io');
 const axios = require('axios');
 const cors = require('cors')
 const router = express.Router();
-
+require("dotenv").config()
 
 
 const server_url = process.env.SERVER_URL;
@@ -93,7 +93,7 @@ io.on('connection', (socket) => {
     
     // saving msg data to database
     if(data){
-      axios.post(`${server_url.toString()}/conversations/new-conversation`,{
+      axios.post(`${server_url}/conversations/new-conversation`,{
         conversation: {
           message,
           from:sender.username,
