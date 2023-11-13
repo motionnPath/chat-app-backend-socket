@@ -75,10 +75,10 @@ io.on('connection', (socket) => {
         .to([reciptient.socketId,sender.socketId])
         .emit('getPrivateMessage',{
           message,
-          from:sender.username,
+          from: sender.username,
           time: (new Date()), 
-          room:private_room,
-          to  : recipient.username
+          room: private_room,
+          to  : reciptient.username
         })
     }else { // if not just send it to the sender and deliver the msg to mongoDB in line 85
       
