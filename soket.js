@@ -64,7 +64,7 @@ io.on('connection', (socket) => {
 
     socket.join(room_1)
     socket.join(room_2)
-    //console.log("data = ",data)
+   
     let reciptient = onlineUsers.find(u => u.username === to.toString())
     let sender = onlineUsers.find(u => u.username === from.toString())
    
@@ -77,7 +77,8 @@ io.on('connection', (socket) => {
           message,
           from:sender.username,
           time: (new Date()), 
-          room:private_room
+          room:private_room,
+          to  : recipient.username
         })
     }else { // if not just send it to the sender and deliver the msg to mongoDB in line 85
       
